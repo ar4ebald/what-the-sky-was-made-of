@@ -10,6 +10,8 @@
 <meta property="og:description" content="Мне приснилось время, когда меня ещё не было.">
 <meta property="og:url" content="https://ar4ebald.github.io/what-the-sky-was-made-of/">
 <meta property="og:image" content="https://ar4ebald.github.io/what-the-sky-was-made-of/img/01-sea.jpg">
+<link rel="alternate" hreflang="ru" href="https://ar4ebald.github.io/what-the-sky-was-made-of/">
+<link rel="alternate" hreflang="en" href="https://ar4ebald.github.io/what-the-sky-was-made-of/en/">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="theme-color" content="#090d24">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -94,6 +96,27 @@
   }
   .dek { margin: 0; color: var(--muted); font-style: italic; max-width: 34ch; }
 
+  /* language switch, pinned to the hero's top-right corner */
+  .lang {
+    position: absolute; z-index: 2;
+    top: clamp(10px, 2vw, 20px); right: clamp(10px, 2vw, 20px);
+    display: flex; gap: 2px; padding: 3px;
+    border-radius: 999px;
+    background: rgba(9, 13, 36, 0.6);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px);
+  }
+  .lang a {
+    font-family: var(--mono); font-size: 0.74rem; font-weight: 500; letter-spacing: 0.12em;
+    padding: 0.4rem 0.8rem; border-radius: 999px;
+    color: var(--muted); text-decoration: none;
+    transition: color 0.2s, background-color 0.2s;
+  }
+  .lang a:hover { color: var(--text); }
+  .lang a[aria-current="page"] { background: var(--amber); color: var(--night); }
+  .lang a:focus-visible { outline: 2px solid var(--ember); outline-offset: 2px; }
+  @media (prefers-reduced-motion: reduce) { .lang a { transition: none; } }
+
   @media (max-width: 640px) {
     .hero .scrim { display: none; }
     .hero header { position: static; padding-top: 1.4rem; }
@@ -167,6 +190,10 @@
 
 <main>
   <section class="hero">
+    <nav class="lang" aria-label="Язык">
+      <a href="./" lang="ru" hreflang="ru" aria-current="page">RU</a>
+      <a href="en/" lang="en" hreflang="en">EN</a>
+    </nav>
     <img src="img/01-sea.jpg" alt="Тёмный океан светящихся искр, закрученных спиралями вокруг одной тёплой янтарной искры.">
     <div class="scrim"></div>
     <header>
